@@ -1,0 +1,27 @@
+macro "Batch Processor 9001 Action Tool - C000R11ee"{
+function removeBackground(input, output, filename) {
+	open(input + filename);
+	run("Brightness/Contrast...");
+	run("Enhance Contrast", "saturated=0.35");
+	run("Apply LUT");
+	run("Close");
+	run("Unsharp Mask...", "radius=1 mask=0.60");
+	saveAs("Tiff", output + filename);
+	close();
+};
+
+Dialog.create('Batch Processor 9001');
+Dialog.addMessage("Please enter input and output directories (e.g. /home/images/");
+Dialog.addString("Input directory:", "");
+Dialog.addString("Output directory:", "");
+Dialog.show();
+
+input = Dialog.getString();
+output = Dialog.getString();
+
+setBatchMode(true); 
+imageList = getFileList(input);
+for (i = 0; i<imageList.length; i++)
+	removeBackground(input, output, imageList[i]);
+setBatchMode(false);
+}
