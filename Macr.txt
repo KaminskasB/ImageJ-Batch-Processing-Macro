@@ -9,8 +9,8 @@ function removeBackground(input, output, filename) {
 	close();
 }
 
-input = "/home/benediktaskaminskas/PET Scans/"
-output = "/home/benediktaskaminskas/Modified PET Scans/"
+input = "/home/benediktaskaminskas/Desktop/Original pictures used in figures/Figure 1/B options/"
+output = "/home/benediktaskaminskas/Desktop/Original pictures used in figures/Figure 1/B options/MOD"
 
 setBatchMode(true); 
 imageList = getFileList(input);
