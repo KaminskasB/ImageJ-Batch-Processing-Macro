@@ -1,6 +1,10 @@
 function removeBackground(input, output, filename) {
 	open(input + filename);
-	run("Subtract Background...", "rolling=50 sliding");
+	run("Brightness/Contrast...");
+	run("Enhance Contrast", "saturated=0.35");
+	run("Apply LUT");
+	run("Close");
+	run("Unsharp Mask...", "radius=1 mask=0.60");
 	saveAs("Tiff", output + filename);
 	close();
 }
