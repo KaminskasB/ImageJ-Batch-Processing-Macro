@@ -10,14 +10,20 @@ function removeBackground(input, output, filename) {
 	close();
 };
 
+/*
 Dialog.create('Batch Processor 9001');
 Dialog.addMessage("Please enter input and output directories \n e.g. /home/images/");
 Dialog.addString("Input directory:", "");
 Dialog.addString("Output directory:", "");
+getDirectory("Choose Input directory");
 Dialog.show();
+*/
 
-input = Dialog.getString();
-output = Dialog.getString();
+input = getDirectory("Choose Input directory");
+output = getDirectory("Choose Output directory");
+
+//input = Dialog.getString();
+//output = Dialog.getString();
 
 setBatchMode(true); 
 imageList = getFileList(input);
