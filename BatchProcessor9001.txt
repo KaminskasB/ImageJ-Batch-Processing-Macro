@@ -26,22 +26,25 @@ if(choice == "No"){
         	    print((count++) + ": " + dir + list[i]); 
         	    open(dir + list[i]);
         	    c = 1; 
-        	    while (nImages > 0) { 
+        	    while (nImages > 0) {
+        	        // This is where the actual modification commands live, edit this to your own spec
         	        IJ.redirectErrorMessages();
-			run("RGB Color");
-			run("Brightness/Contrast...");
-			run("Enhance Contrast", "saturated=0.35");
-			run("Close");
-			run("Unsharp Mask...", "radius=1 mask=0.60");
-			saveAs("Tiff", dir + prefix + list[i] + "-" + c + ".tif"); 
-			close();
-        	c++;
+			        run("RGB Color");
+			        run("Brightness/Contrast...");
+			        run("Enhance Contrast", "saturated=0.35");
+			        run("Close");
+			        run("Unsharp Mask...", "radius=1 mask=0.60");
+			        saveAs("Tiff", dir + prefix + list[i] + "-" + c + ".tif");
+			        close();
+        	        c++;
                 }
             }
    	 	}
 	}
 }else if(choice == "Yes"){
 	function processImage(input, output, filename) {
+	}
+	    // This is where the actual modification commands live, edit this to your own spec
 	    IJ.redirectErrorMessages();
 	    open(input + filename);
 	    run("RGB Color");
